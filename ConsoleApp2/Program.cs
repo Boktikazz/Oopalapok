@@ -10,12 +10,23 @@ namespace ConsoleApp2
     public class Szemely 
     {
         public string Nev { get; set; }
-        public int Eletkor { get; set; }
+        private int Eletkor;
 
         public Szemely(string nev, int eletkor)
         {
             Nev = nev;
             Eletkor = eletkor;
+        }
+
+        public int Kor
+        {
+            get { return Eletkor; }
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("Az életkor nem lehet negatív.");
+                Eletkor = value;
+            }
         }
 
         public void Kiir()
