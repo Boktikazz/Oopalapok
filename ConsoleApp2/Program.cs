@@ -6,7 +6,7 @@ namespace ConsoleApp2
 {
     public class Bankszamla
     {
-        private int egyenleg;
+        private uint egyenleg;
 
         public void Betesz()
         {
@@ -37,6 +37,19 @@ namespace ConsoleApp2
         }
 
     }
+    public class Dolgozo : Szemely
+    {
+        private int Ber;
+
+        public override void Kiir() 
+        {
+            Console.WriteLine("Én egy dolgozo vagyok");
+        
+        }
+    }
+
+
+
     public class Szemely
     {
         protected string nev;
@@ -67,6 +80,10 @@ namespace ConsoleApp2
             return $"A tanulo neve {nev} életkora {kor}";
         }
 
+        public virtual void Kiir()
+        {
+            Console.WriteLine("Én egy hallgato vagyok");
+        }
     }
     internal class Program
     {
@@ -92,7 +109,10 @@ namespace ConsoleApp2
             {
                 Console.WriteLine(item.Nev);
             }
-
+            Hallgato h2 = new Hallgato();
+            h2.Kiir();
+            Dolgozo d2 = new Dolgozo();
+            d2.Kiir();
             //Console.WriteLine(tanulo);
             //Console.WriteLine(tanulo.kor);
         }
