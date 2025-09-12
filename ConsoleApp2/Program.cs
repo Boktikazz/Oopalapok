@@ -31,9 +31,9 @@ namespace ConsoleApp2
 
             }
         }
-        public string Kiir()
+        public override string ToString()
         {
-            return nev;
+            return nev + " " + kor + " éves";
         }
 
     }
@@ -42,8 +42,7 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
           Szemely tanulo = new Szemely("Kiss Péter");
-            Console.WriteLine(tanulo.Kiir());
-            tanulo.Kor = -1;
+            tanulo.Kor = 21;
             Console.WriteLine(tanulo.Kor);
             //Console.WriteLine( tanulo.nev);
             //Console.WriteLine( tanulo.kor);
