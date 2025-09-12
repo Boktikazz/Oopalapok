@@ -1,0 +1,172 @@
+namespace gyakorlas
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Feladat20();
+            //Feladat17();
+            //Feladat19();
+            //Feladat21();
+            //Feladat30();
+            //lnko(100, 20);
+            //Szorzotabla();
+            Feladat38();
+        }
+
+        private static void Feladat38()
+        {
+            Console.WriteLine("Számot: ");
+            int bekertszam = int.Parse (Console.ReadLine());
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            for (int i = 0; i < bekertszam; i++)
+            {
+                int csillagszam = 1 + i*2;
+                int kezdcsill = (Console.WindowWidth - csillagszam) /2;
+                Console.SetCursorPosition(kezdcsill, i);
+                Console.WriteLine(new string('*', csillagszam));
+            }
+            Console.ForegroundColor= ConsoleColor.Red;
+            for (int i = 0; i < 7; i++)
+            {
+                int csillagszam = 1 + i * 2;
+                int kezdcsill = (Console.WindowWidth) / 2;
+                Console.SetCursorPosition(kezdcsill, i +bekertszam);
+                Console.WriteLine("||");
+            }
+            Console.ResetColor();
+
+        }
+
+        private static void Szorzotabla()
+        {
+            int szam;
+
+            do
+            {
+                Console.WriteLine("Kérem adjon meg egy számot 5-10 között.");
+                szam = int.Parse(Console.ReadLine());
+            } while (szam < 5 || szam>10);
+            Console.WriteLine("A szorzotabla:");
+            for (int i = 1; i <= szam+1; i++)
+            {
+                for (int j = 1; j < szam+1; j++)
+                {
+                    Console.Write($"{i*j}\t");
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+        private static int lnko(int a, int b)
+        {
+          while (b>0)
+          {
+            int temp = b;
+            b = a % b;
+            a = temp;
+            }
+          return a;
+        }
+
+        private static void Feladat30()
+        {
+            int a = 0;
+            int b = 0;
+            int c = 0;
+            Console.WriteLine("Adjon meg két pozitiv egesz szamot.");
+            bool hello = true;
+        }
+
+        private static void Feladat21()
+        {
+            Console.WriteLine("20. feladat\nKérem adjon meg egy pozitív egész számot:");
+            int bekertSzam = int.Parse(Console.ReadLine());
+            while (bekertSzam%2 == 0)
+            {
+                Console.Write("2*");
+                bekertSzam /= 2;
+            }
+            Console.WriteLine(bekertSzam);
+        }
+
+        private static void Feladat20()
+        {
+            int bekertSzam;
+            do
+            {
+                Console.WriteLine("20. feladat\nKérem adjon meg egy pozitív egész számot:");
+                bekertSzam = int.Parse(Console.ReadLine());
+            } while (bekertSzam <= 0);
+           
+        }
+
+        private static void Feladat19()
+        {
+            List<int> osztok = new List<int>();
+            Console.WriteLine("19. feladat\nKérem adjon meg egy pozitív egész számot:");
+            int bekertSzam = int.Parse(Console.ReadLine());
+            osztok.Add(1);
+            for (int i = 2; i <= bekertSzam / 2; i++)
+            {
+                if (bekertSzam % i == 0)
+                {
+                    osztok.Add(i);
+                }
+            }
+            osztok.Add(bekertSzam);
+            if (osztok.Sum() == bekertSzam * 2)
+            {
+                Console.Write($"Tökéletes szám!\nMert, 2*{bekertSzam}=");
+                foreach (int i in osztok)
+                {
+                    Console.Write(i + "*");
+                }
+                Console.WriteLine("\b ");
+            }
+            else
+            {
+                Console.WriteLine("Nem tökéletes szám!");
+            }
+        }
+
+        private static void Feladat17()
+        {
+            //17. feladat
+            Console.WriteLine("17. feladat\nKérem adjon meg egy pozitív egész számot:");
+            int bekertSzam = int.Parse(Console.ReadLine());
+            PozitivSzamOsztoiGyors(bekertSzam);
+            PozitivSzamOsztoiLassu(bekertSzam);
+        }
+
+        private static void PozitivSzamOsztoiLassu(int bekertSzam)
+        {
+            DateTime start = DateTime.Now;
+            for (int i = 1; i <= bekertSzam; i++)
+            {
+                if (bekertSzam % i == 0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+            Console.WriteLine($"A lassú algoritmus ideje: {DateTime.Now - start}");
+        }
+
+        private static void PozitivSzamOsztoiGyors(int bekertSzam)
+        {
+            DateTime start = DateTime.Now;
+            Console.WriteLine("1");
+            for (int i = 2; i <= bekertSzam / 2; i++)
+            {
+                if (bekertSzam % i == 0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+            Console.WriteLine(bekertSzam);
+            Console.WriteLine($"A gyors algoritmus ideje: {DateTime.Now - start}");
+        }
+    }
+}
